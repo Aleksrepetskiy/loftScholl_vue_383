@@ -1,3 +1,6 @@
+Репецкий АЛександр Александрович - 10.05.2021
+gitHub pages - https://aleksrepetskiy.github.io/loftScholl_vue_383/
+
 # Учебный шаблон проекта Portfolio
 
 > Перед установкой зависимостей и запуском проекта убедитесь, что у вас установлена [последняя версия Node.js & NPM](https://nodejs.org/en/download/current/), а так же 
