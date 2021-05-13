@@ -1,15 +1,42 @@
-include ./mixins.pug
+extends ./main.layout.pug
 
-<!DOCTYPE html>
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    meta(http-equiv="X-UA-Compatible", content="ie=edge")
-    title Portfolio | main page
-  body
-    .wrapper
-      .maincontent
-        +image('content/user.jpg', 'user-pic')
-        +icon('link', 'link-class')
-        .icon-bg
+block content
+	.welcome-section 
+		section.hero
+			.container.hero__container
+				header.header 
+					a.logo(href="#") РA 
+					nav.menu 
+						ul.menu__list
+							-
+								var menuItems = [
+								['Обо мне', '#about.html'],
+								['Навыки', '#index.html'],
+								['Работы', '#portfolio.html'],
+								['Отзывы', '#index.html'],
+								]
+							each item in menuItems
+								li.menu__item
+									a.menu__link(href=`${item[1]}`) #{item[0]}
+					ul.social
+						- 
+							var soc = [
+							['insta', '#'],
+							['vk', 'https://vk.com/id10183899'],
+							['github', 'https://github.com/Aleksrepetskiy'],
+							['envelope', '#'],
+							]
+						each item in soc
+							li.social__item
+								a(href=`${item[1]}`, target="_blank" class=`social__link`)
+									+icon(item[0], "social__icon") 
+				.userinfo 
+					.userinfo__title Личный сайт #[br] веб разработчика 
+					.userinfo__name Репецкий Александр
+				.hero__bottom-buttons
+					button.scroll-down-btn Скролл  
+						+icon("scroll", "scroll-down-btn__icon")
+				
+	//- +image('content/user.jpg', 'user-pic')
+	//- +icon('link', 'link-class')
+	//- .icon-bg
