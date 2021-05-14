@@ -1,0 +1,43 @@
+.values {
+	padding: 140px 0;
+	background: url("~images/bg/values.jpg") center bottom /cover no-repeat;
+	position: relative;
+		&:before {
+			content: "";
+			position: absolute;
+			background: url("~images/bg/hand.png") 0 100%/contain no-repeat;
+			display: block;
+			bottom: -34%;
+			height: 100%;
+			width: 100%;
+			left: 0%;
+		}
+	&__container {
+		position: relative;
+	}
+	&__title {
+		margin-bottom: 79px;
+		display: flex;
+		justify-content: center;
+	}
+	&__title-container {
+		width: 38%;
+		margin-left: 6%;
+	}
+	&__title-text {
+		font-weight: bold;
+		font-size: 30px;
+		margin-bottom: 53px;
+	}
+	&__content {
+		color: rgba($text-color, .8);
+		font-weight: 600;
+	}
+	&__widget {
+		display: flex;
+		justify-content: flex-end;
+	}
+	&__widget-container {
+		width: 56%;
+	}
+}
