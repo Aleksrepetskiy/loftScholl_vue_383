@@ -1,0 +1,14 @@
+.thumbs {
+	position: relative;
+	display: flex;
+	&__item {
+		height: 106px;
+		transition: .2s;
+		cursor: pointer;
+		&.active,
+		&:hover {
+			outline: 3px solid #f29400;
+			z-index: 1;
+		}
+	}
+}

@@ -91,3 +91,82 @@ block content
 															stop(offset="0%" stop-color="#D0731B")
 															stop(offset="100%" stop-color="#DC9322")
 													.skill__title #{skill}
+	section.works
+		.container
+			.section-title Мои работы
+			.works__content
+				.works-preview
+					.works-preview__pics(data-slide="1")
+						.works-preview__pics-content
+							+image('content/slide_1.jpg', 'works-preview__fullpic')
+							.works-preview__thumbs
+								ul.thumbs
+									- for (var i = 3; i > 0; i--)
+										li.thumbs__item(class=`${i === 3 ? 'active' : ''}`)
+											a(href="").thumbs__link
+												+image(`content/slide_${i}.jpg`, 'thumb__pic')
+							.works-preview__buttons
+								.square-btns
+									a(href="#").square-btns__btn.square-btns__btn--next
+									a(href="#").square-btns__btn.square-btns__btn--prev
+					.works-preview__info
+						- var tags = ['HTML', 'CSS', 'JavaScript'];
+						.works-preview__tags
+							ul.tags
+								each item in tags
+									li.tag__item 
+										.tag #{item}
+						.works-preview__title Сайт школы образования
+						.works-preview__desc
+							p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
+						a(href="").iconed-link Посмотреть сайт
+	section.reviews
+		.container.reviews__container
+			.slider
+				.slider__header 
+					.reviews__section-title Что обо мне говорят
+					.slider__butons
+						a.round-btn.round-btn__prev
+						a.round-btn.round-btn__next
+				ul.slider__content
+					- for (var i = 0; i < 2; i++)
+						li.slider__content-item
+							.quote
+								.quote__text
+									p Этот парень проходил обучение веб-разработке не где-то, а в Loftschool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+								.quote__user
+									.user-display
+										.user-display__avatar-style
+											+image('content/user.jpg', 'user-min__avatar-pic')
+										.user-display__info
+											.user-display__name Ковальчук Дмитрий
+											.user-display__occ Основатель Loftschool
+	footer.footer
+		.container.footer__container
+			.footer__copyright
+				.footer__copyright-year &copy; 2019
+				.footer__copyright-userinfo
+					.footer__copyright-name Репецкий Александр
+					.footer__data-text Личный сайт веб - разработчика
+			.footer__data
+				.footer__menu
+					nav.menu
+						ul.menu__list.menu__list--footer
+							each item in menuItems
+								li.menu__item
+									a.menu__link(href=`${item[1]}`) #{item[0]}
+				.footer__data-content
+					.footer__data-col
+						.footer__data-text
+							p Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
+						.footer__socials
+						ul.social.social--round-borders
+							each item in soc
+								li.social__item
+									a(href=`${item[1]}`, target="_blank" class=`social__link`)
+										+icon(item[0], "social__icon") 
+					.footer__data-col
+						.text-quote
+							.text-quote__text
+								p Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете 
+						.text-quote__author Martin Golding

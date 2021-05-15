@@ -1,6 +1,8 @@
 {
   "text-color": "#fff",
-  "links-color": "#4b6fd7",
+  "dark-icon": "#303133",
+  "color-black": "#333C49",
+  "links-color": "#586ED3",
   "errors-color": "#cd1515",
   "bp-desktop-hd": "1800px",
   "bp-desktop": "1200px",
