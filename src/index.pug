@@ -129,22 +129,27 @@ block content
 						a.round-btn.round-btn__prev
 						a.round-btn.round-btn__next
 				ul.slider__content
-					- for (var i = 0; i < 2; i++)
+					- 
+						var reviews = [
+						['content/dmitriy.jpg', 'Ковальчук Дмитрий', 'Основатель Loftschool', 'Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!'],
+						['content/vladimir.jpg', 'Владимир Сабанцев', 'Преподаватель', 'Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах'],
+						]
+					each item in reviews
 						li.slider__content-item
 							.quote
 								.quote__text
-									p Этот парень проходил обучение веб-разработке не где-то, а в Loftschool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+									p #{item[3]}
 								.quote__user
 									.user-display
 										.user-display__avatar-style
-											+image('content/user.jpg', 'user-min__avatar-pic')
+											+image(item[0], 'user-min__avatar-pic')
 										.user-display__info
-											.user-display__name Ковальчук Дмитрий
-											.user-display__occ Основатель Loftschool
+											.user-display__name #{item[1]}
+											.user-display__occ #{item[2]}
 	footer.footer
 		.container.footer__container
 			.footer__copyright
-				.footer__copyright-year &copy; 2019
+				.footer__copyright-year &copy; 2021
 				.footer__copyright-userinfo
 					.footer__copyright-name Репецкий Александр
 					.footer__data-text Личный сайт веб - разработчика

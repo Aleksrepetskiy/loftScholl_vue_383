@@ -1,11 +1,14 @@
 .quote {
 	position: relative;
-	padding-left: 24%;
+	padding-left: 21%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
 	&:before {
 		content: "";
 		display: block;
 		width: 18%;
-		height: 37%;
+		height: 32%;
 		opacity: .05;
 		background: svg-load('quote.svg', fill=$text-color) center center / contain no-repeat;
 		position: absolute;
@@ -15,5 +18,9 @@
 	&__text {
 		margin-bottom: 31px;
 		color: rgba($text-color, .8);
+		line-height: 1.9em;
+	}
+	&__user {
+		margin-top: auto;
 	}
 }
