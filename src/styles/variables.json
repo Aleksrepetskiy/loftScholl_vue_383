@@ -4,6 +4,7 @@
   "color-black": "#333C49",
   "links-color": "#586ED3",
   "errors-color": "#cd1515",
+  "yellow": " #FF9A00",
   "bp-desktop-hd": "1800px",
   "bp-desktop": "1200px",
   "bp-tablets": "768px",
