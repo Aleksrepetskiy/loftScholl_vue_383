@@ -1,4 +1,13 @@
 .works {
 	padding: 190px 0;
+	@include phones{
+		padding: 90px 0;
+	}
+
+	&__container {
+		@include phones{
+			width: 100%;
+		}
+	}
 
 }

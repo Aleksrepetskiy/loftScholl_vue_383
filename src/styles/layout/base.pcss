@@ -1,7 +1,4 @@
 html {
-	@include desktop {
-		font-size: 15px;
-	}
 	@include tablets {
 		font-size: 14px;
 	}
@@ -18,6 +15,7 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	color: $text-color;
+	min-width: 320px;
 }
 
 .wrapper {
@@ -29,9 +27,9 @@ body {
 .container {
 	margin: 0 auto;
 	max-width: 1498px;
-	width: 95%;
+	width: 90%;
 	@include phones {
-		width: 85%;
+		max-width: 1098px;
 	}
 }
 

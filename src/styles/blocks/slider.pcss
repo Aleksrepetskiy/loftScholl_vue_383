@@ -3,16 +3,24 @@
 		display: flex;
 		align-items: center;
 		margin-bottom: 78px;
+		@include phones {
+			flex-wrap: wrap;
+			text-align: center;
+			justify-content: center;
+		}
 	}
 	&__butons {
 		display: flex;
 	}
 	&__content {
 		display: flex;
+		overflow: hidden;
 	}
 	&__content-item {
 		width: 50%;
 		flex-shrink: 0;
-		padding-right: 30px;
+		@include phones {
+			width: 100%;
+		}
 	}
 }

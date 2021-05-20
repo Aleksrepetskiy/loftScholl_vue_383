@@ -6,30 +6,32 @@ block content
 			.container.hero__container
 				header.header 
 					a.logo(href="#") РA 
-					nav.menu 
-						ul.menu__list
-							-
-								var menuItems = [
-								['Обо мне', '#about.html'],
-								['Навыки', '#index.html'],
-								['Работы', '#portfolio.html'],
-								['Отзывы', '#index.html'],
+					.header__menu
+						nav.menu 
+							ul.menu__list
+								-
+									var menuItems = [
+									['Обо мне', '#about.html'],
+									['Навыки', '#index.html'],
+									['Работы', '#portfolio.html'],
+									['Отзывы', '#index.html'],
+									]
+								each item in menuItems
+									li.menu__item
+										a.menu__link(href=`${item[1]}`) #{item[0]}
+					.header__social
+						ul.social
+							- 
+								var soc = [
+								['insta', '#'],
+								['vk', 'https://vk.com/id10183899'],
+								['github', 'https://github.com/Aleksrepetskiy'],
+								['envelope', '#'],
 								]
-							each item in menuItems
-								li.menu__item
-									a.menu__link(href=`${item[1]}`) #{item[0]}
-					ul.social
-						- 
-							var soc = [
-							['insta', '#'],
-							['vk', 'https://vk.com/id10183899'],
-							['github', 'https://github.com/Aleksrepetskiy'],
-							['envelope', '#'],
-							]
-						each item in soc
-							li.social__item
-								a(href=`${item[1]}`, target="_blank" class=`social__link`)
-									+icon(item[0], "social__icon") 
+							each item in soc
+								li.social__item
+									a(href=`${item[1]}`, target="_blank" class=`social__link`)
+										+icon(item[0], "social__icon") 
 				.userinfo 
 					.userinfo__title Личный сайт #[br] веб разработчика 
 					.userinfo__name Репецкий Александр
@@ -92,7 +94,7 @@ block content
 															stop(offset="100%" stop-color="#DC9322")
 													.skill__title #{skill}
 	section.works
-		.container
+		.container.works__container
 			.section-title Мои работы
 			.works__content
 				.works-preview
@@ -152,7 +154,7 @@ block content
 				.footer__copyright-year &copy; 2021
 				.footer__copyright-userinfo
 					.footer__copyright-name Репецкий Александр
-					.footer__data-text Личный сайт веб - разработчика
+					.footer__data-text Личный сайт веб-разработчика
 			.footer__data
 				.footer__menu
 					nav.menu

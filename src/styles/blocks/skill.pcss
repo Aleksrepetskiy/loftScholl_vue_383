@@ -12,10 +12,17 @@
 	&-row__list {
 		display: flex;
 		flex-wrap: wrap;
-		margin-left: -4%;
+		margin-left: -3%;
+		@include phones{
+			justify-content: center;
+			margin-left: 0;
+		}
 	}
 	&-row__item {
-		margin-left: 4%;
+		margin-left: 3%;
+		@include phones{
+			margin-left: 0;
+		}
 	}
 }
 

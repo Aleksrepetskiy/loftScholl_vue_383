@@ -2,4 +2,15 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	&__menu {
+		flex: 1;
+		@include tablets{
+			display: none;
+		}
+	}
+	&__social {
+		@include phones{
+			display: none;
+		}
+	}
 }

@@ -2,16 +2,37 @@
 	padding: 140px 0;
 	background: url("~images/bg/values.jpg") center bottom /cover no-repeat;
 	position: relative;
-		&:before {
-			content: "";
-			position: absolute;
-			background: url("~images/bg/hand.png") 0 100%/contain no-repeat;
-			display: block;
-			bottom: -8%;
-			height: 91%;
-			width: 41%;
-			left: 0;
+	@include tablets {
+		padding-bottom: 336px;
+	}
+	@include phones {
+		padding-top: 80px;
+	}
+	&:before {
+		content: "";
+		position: absolute;
+		background: url("~images/bg/hand.png") 0 100%/contain no-repeat;
+		display: block;
+		bottom: -8%;
+		height: 91%;
+		width: 41%;
+		left: 0;
+		@include desktop {
+			left: -7%;
 		}
+		@include tablets {
+			bottom: 0;
+			left: 50%;
+			height: 32%;
+			width: 64%;
+			transform: translateX(-50%);
+			background-position: bottom;
+			background-image: url("~images/bg/hand_90.png");
+		}
+		@include phones {
+			width: 100%;
+		}
+	}
 	&__container {
 		position: relative;
 	}
@@ -23,6 +44,18 @@
 	&__title-container {
 		width: 38%;
 		margin-left: 6%;
+		@include desktop {
+			margin-left: 0;
+			width: 50%;
+		}
+		@include tablets {
+			width: 68%;
+			text-align: center;
+		}
+		@include phones {
+			width: 100%;
+			text-align: left;
+		}
 	}
 	&__title-text {
 		font-weight: bold;
@@ -40,5 +73,12 @@
 	}
 	&__widget-container {
 		width: 58%;
+		@include desktop {
+			width: 68%;
+		}
+		@include tablets {
+			width: 100%;
+			text-align: center;
+		}
 	}
 }

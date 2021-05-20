@@ -1,6 +1,9 @@
 .works-preview {
 	display: flex;
-	justify-content: space-between;	
+	justify-content: space-between;
+	@include tablets {
+		flex-wrap: wrap;
+	}	
 	&__pics-content {
 		position: absolute;
 		top: 0;
@@ -10,8 +13,7 @@
 	}
 	&__pics {
 		position: relative;
-		flex: 1;
-		max-width: 975px;
+		width: 65%;
 		height: 549px;
 		z-index: 1;
 		&::before {
@@ -25,6 +27,25 @@
 			color: #E6E6E6;
 			transform: translateX(70%);
 			z-index: -1;
+			@include desktop {
+				font-size: 300px;
+			}
+			@include phones {
+				display: none;
+			}
+		}
+		@include desktop {
+			height: 359px;
+			width: 59%;
+		}
+		@include tablets {
+			width: 92%;
+			margin-bottom: 56px;
+		}
+		@include phones {
+			width: 100%;
+			height: 185px;
+			margin-bottom: 60px;
 		}
 	}
 	&__fullpic {
@@ -34,14 +55,27 @@
 	}
 	&__info {
 		width: 24%;
+		position: static;
+		z-index: 1;
+		@include desktop {
+			width: 29%;
+		}
+		@include tablets {
+			width: 100%;
+			text-align: center;
+		}
 	}
 	&__buttons {
 		position: absolute;
 		right: -53px;
 		bottom: 56px;
+		@include phones {
+			right: 0;
+			bottom: 0;
+		}
 	}
 	&__tags {
-		margin-bottom: 35px;
+		margin-bottom: 27px;
 
 	}
 	&__title {
@@ -54,12 +88,20 @@
 		color: $color-black;
 		margin-bottom: 44px;
 		line-height: 1.9em;
+		@include tablets {
+			max-width: 422px;
+			margin: 0 auto;
+			margin-bottom: 29px;
+		}
 	}
 	&__thumbs {
 		max-width: 732px;
 		position: absolute;
 		bottom: 56px;
 		right: 0;
+		@include phones {
+			display: none;
+		}
 	}
 
 }
