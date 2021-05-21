@@ -32,6 +32,8 @@ block content
 								li.social__item
 									a(href=`${item[1]}`, target="_blank" class=`social__link`)
 										+icon(item[0], "social__icon") 
+					.burger 
+						+icon("menu", "burger__icon")
 				.userinfo 
 					.userinfo__title Личный сайт #[br] веб разработчика 
 					.userinfo__name Репецкий Александр
@@ -177,3 +179,36 @@ block content
 							.text-quote__text
 								p Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете 
 						.text-quote__author Martin Golding
+	.popup-menu 
+		.popup-menu__container 
+			.popup-menu__close
+				.close
+					+icon("close", "close__icon")
+			.popup-menu__menu
+				nav.menu 
+					ul.menu__list
+						-
+							var menuItems = [
+							['Обо мне', '#about.html'],
+							['Навыки', '#index.html'],
+							['Работы', '#portfolio.html'],
+							['Отзывы', '#index.html'],
+							]
+						each item in menuItems
+							li.menu__item
+								a.menu__link(href=`${item[1]}`) #{item[0]}
+			.popup-menu__social
+				ul.social
+					- 
+						var soc = [
+						['insta', '#'],
+						['vk', 'https://vk.com/id10183899'],
+						['github', 'https://github.com/Aleksrepetskiy'],
+						['envelope', '#'],
+						]
+					each item in soc
+						li.social__item
+							a(href=`${item[1]}`, target="_blank" class=`social__link`)
+								+icon(item[0], "social__icon")
+
+

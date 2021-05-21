@@ -2,6 +2,12 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	@include tablets{
+		justify-content: flex-start;
+	}
+	@include phones{
+		justify-content: space-between;
+	}
 	&__menu {
 		flex: 1;
 		@include tablets{
@@ -9,6 +15,10 @@
 		}
 	}
 	&__social {
+		@include tablets{
+			margin-left: auto;
+			margin-right: 88px;
+		}
 		@include phones{
 			display: none;
 		}
