@@ -74,27 +74,7 @@ block content
 						p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
 			.values__widget
 				.values__widget-container 
-					- 
-						var skillsCategoris = [
-							["Frontend", ["HTML", "CSS", "javascript", "vue"]],
-							["Worcflow", ["GIT", "Terminal", "Gulp", "Webpack"]],
-						]
-					ul.skills 
-						each item in skillsCategoris
-							li.skills__item 
-								.skills-row 
-									.skills-row__title #{item[0]}
-									ul.skills-row__list
-										each skill in item[1]
-											ul.skills-row__item
-												.skill
-													svg.skill__circle-shape(viewBox="0 0 100 100")
-														circle(r="40" cx="50" cy="50" class="skill__circle skill__circle--first")
-														circle(r="40" cx="50" cy="50" stroke="url(#gradient)" transform="rotate(180 50 50)" class="skill__circle skill__circle--second")
-														linearGradient(id="gradient" x1="0%" y1="0%"  x2="100%" y2="0%")
-															stop(offset="0%" stop-color="#D0731B")
-															stop(offset="100%" stop-color="#DC9322")
-													.skill__title #{skill}
+					#skills-component
 	section.works
 		.container.works__container
 			.section-title Мои работы
