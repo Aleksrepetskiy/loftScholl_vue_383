@@ -79,57 +79,11 @@ block content
 		.container.works__container
 			.section-title Мои работы
 			.works__content
-				.works-preview
-					.works-preview__pics(data-slide="1")
-						.works-preview__pics-content
-							+image('content/slide_1.jpg', 'works-preview__fullpic')
-							.works-preview__thumbs
-								ul.thumbs
-									- for (var i = 3; i > 0; i--)
-										li.thumbs__item(class=`${i === 3 ? 'active' : ''}`)
-											a(href="").thumbs__link
-												+image(`content/slide_${i}.jpg`, 'thumb__pic')
-							.works-preview__buttons
-								.square-btns
-									a(href="#").square-btns__btn.square-btns__btn--next
-									a(href="#").square-btns__btn.square-btns__btn--prev
-					.works-preview__info
-						- var tags = ['HTML', 'CSS', 'JavaScript'];
-						.works-preview__tags
-							ul.tags
-								each item in tags
-									li.tag__item 
-										.tag #{item}
-						.works-preview__title Сайт школы образования
-						.works-preview__desc
-							p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
-						a(href="").iconed-link Посмотреть сайт
+				#works-component
 	section.reviews
 		.container.reviews__container
-			.slider
-				.slider__header 
-					.reviews__section-title Что обо мне говорят
-					.slider__butons
-						a.round-btn.round-btn__prev
-						a.round-btn.round-btn__next
-				ul.slider__content
-					- 
-						var reviews = [
-						['content/dmitriy.jpg', 'Ковальчук Дмитрий', 'Основатель Loftschool', 'Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!'],
-						['content/vladimir.jpg', 'Владимир Сабанцев', 'Преподаватель', 'Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах'],
-						]
-					each item in reviews
-						li.slider__content-item
-							.quote
-								.quote__text
-									p #{item[3]}
-								.quote__user
-									.user-display
-										.user-display__avatar-style
-											+image(item[0], 'user-min__avatar-pic')
-										.user-display__info
-											.user-display__name #{item[1]}
-											.user-display__occ #{item[2]}
+				#slider-component
+
 	footer.footer
 		.container.footer__container
 			.footer__copyright
