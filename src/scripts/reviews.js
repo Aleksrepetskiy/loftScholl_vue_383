@@ -8,9 +8,18 @@ new Vue({
 	data() {
 		return {
 			reviews: [],
+			disablePrev: true,
+			disableNext: false,
 			sliderOptions: {
-				slidesPerView: 2,
-			}
+				breakpoints: {
+					320: {
+						slidesPerView: 1,
+					},
+					480: {
+						slidesPerView: 2,
+					},
+				}
+			},
 		}
 	},
 	components: {
@@ -21,6 +30,12 @@ new Vue({
 		swiper: directive
 	},
 	methods: {
+		checkArrow(e){
+			this.disablePrev = this.$refs.slider.$swiper.activeIndex === 0 ? true : false ;
+			this.disableNext = this.$refs.slider.$swiper.activeIndex === this.$refs.slider.$swiper.snapGrid.length - 1 ? true : false;
+			console.log(this.$refs.slider.$swiper.activeIndex)
+			console.log(this.$refs.slider.$swiper.snapGrid)
+		},
 		requireImagesToArray(data) {
 			return data.map((item) => {
 				const requiredImages = require(`../images/content/${item.pic}`).default;
