@@ -7,6 +7,9 @@
 	@include tablets {
 		padding-left: 12%;
 	}
+	@include phones {
+		padding-left: 0;
+	}
 	&:before {
 		content: "";
 		display: block;
@@ -17,6 +20,12 @@
 		position: absolute;
 		top: 0;
 		left: 0;
+		@include tablets {
+			width: 10%;
+		}
+		@include phones {
+			display: none;
+		}
 	}
 	&__text {
 		margin-bottom: 31px;
