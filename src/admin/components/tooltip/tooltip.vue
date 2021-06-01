@@ -1,4 +1,4 @@
-<template>
+<template v-slot:tooltip>
   <div class="input__error-tooltip-container">{{text}}</div>
 </template>
 
