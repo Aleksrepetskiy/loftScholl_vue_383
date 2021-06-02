@@ -37,6 +37,9 @@ export default ({
 	@import "normalize.css";
 	@import "../styles/mixins.pcss";
 	@import "../styles/layout/base.pcss";
+	body {
+		color: #414C63;
+	}
 </style>
 
 <style lang="postcss" scoped src="./app.pcss"></style>

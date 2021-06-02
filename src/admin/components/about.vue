@@ -62,5 +62,5 @@ export default {
 		font-size: 21px;
 		font-weight: bold;
 		color: #414C63;
-		}
+	}
 </style>

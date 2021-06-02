@@ -1,6 +1,9 @@
 <template>
   <div class="works-container">
-    <h1>works</h1>
+    <div class="header">
+		<div class="title">Блок «Работы»</div>
+	</div>
+	<router-view></router-view>
   </div>
 </template>
 
@@ -14,7 +17,17 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-	h1 {
-		color: black;
+	.works-container {
+		color: #414C63;
+	}
+		.header {
+		display: flex;
+		margin-bottom: 60px;
+	}
+	.title {
+		margin-right: 60px;
+		font-size: 21px;
+		font-weight: bold;
+		color: #414C63;
 	}
 </style>

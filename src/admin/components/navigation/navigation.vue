@@ -2,15 +2,21 @@
    <nav class="navigation-component">
     <div class="container">
       <ul class="list">
-        <li class="item"
+        <li
           v-for="link in links" 
-          :key="link.id">
-          <router-link  
+          :key="link.id"
+		  
+		  >
+		  <!-- <div class="link" @click="changePage(link.alias, link.id)" :class="['link', {active: link.active}]">{{link.title}}</div> -->
+		  	<div @click="setActiveTab(link.id)">
+				<router-link  
 				:to="`/${link.alias}`" 
 				:class="['link', {active: link.active}]"
-			>
-				{{link.title}}
-			</router-link>
+				>
+					{{link.title}}
+				</router-link>
+			</div>
+          	
         </li>
       </ul>
     </div>
@@ -28,6 +34,23 @@ export default {
       links,
     };
   },
+  methods: {
+	  changePage(way, id) {
+		  this.setActiveTab(id); 
+		  this.$router.push(`/${way}`);
+	  },
+	  setActiveTab(id) {
+		  this.links = this.links.map((item)=>{
+			  if (item.id === id) {
+				  item.active = true
+			  }else {
+				  item.active = false
+			  }
+			  return item
+		  })
+	  }
+
+  }
 };
 </script>
 <style lang="postcss" scoped>
@@ -42,7 +65,8 @@ export default {
 	display: block;
 	text-decoration: none;
 	color: #414C63;
-		&:hover {
+	cursor: pointer;
+		&:hover, &.active {
 			color: #383bcf;
 			position: relative;
 			&:after {
