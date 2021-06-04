@@ -1,34 +1,20 @@
 <template>
 	<div class="app-container">
-		<pageHeader />
-		<navigation />
+		<router-view name="header"/>
 		<div class="page-content">
-      		<div class="container">
-				<router-view></router-view>
-			</div>
+			<router-view />
 		</div>
 	</div>
 </template>
 
 <script>
-
-import  pageHeader  from './components/pageHeader/pageHeader.vue'
-import  navigation  from './components/navigation/navigation.vue'
-
-
 export default ({
-	components: {
-		pageHeader,
-		navigation,
-	},
 	data() {
 		return{
 
 		}
-
 	},
 
-	
 })
 </script>
 

@@ -54,6 +54,9 @@ export default {
 };
 </script>
 <style lang="postcss" scoped>
+	.navigation-component {
+		background-color: #fff;
+	}
 	.list {
 	display: flex;
 	}

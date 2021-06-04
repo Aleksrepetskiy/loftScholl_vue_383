@@ -3,7 +3,7 @@
     <div class="header">
 		<div class="title">Блок «Работы»</div>
 	</div>
-	<router-view></router-view>
+	<!-- <router-view></router-view> -->
   </div>
 </template>
 
