@@ -6,6 +6,7 @@
 			:editModeByDefault="empty" 
 			@remove="$emit('remove', $event)"
 			@approve="$emit('approve', $event)"
+			:errorMessage="validation.firstError('categoryTitle')"
 		/>
 		<template slot="content">
 			<ul class="skills" v-if="empty === false">
@@ -30,8 +31,15 @@ import card from "../card"
 import editLine from "../editLine"
 import skill from "../skill"
 import skillAddLine from "../skillAddLine"
+import { Validator, mixin as ValidatorMixin } from "simple-vue-validator";
 
 export default {
+	mixins: [ValidatorMixin],
+	validators: {
+		"categoryTitle": value => {
+			return Validator.value(value).required("Введите название");
+		}
+	},
 	components: {
 		card,
 		editLine,

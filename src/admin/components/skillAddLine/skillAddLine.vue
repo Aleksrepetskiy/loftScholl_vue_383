@@ -17,7 +17,14 @@
 <script>
 import input from "../input";
 import button from "../button";
+import { Validator, mixin as ValidatorMixin } from "simple-vue-validator";
 export default {
+	mixins: [ValidatorMixin],
+	validators: {
+		"categoryTitle": value => {
+			return Validator.value(value).required("Введите название");
+		}
+	},
   props: {
     blocked: Boolean
   },

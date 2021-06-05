@@ -31,6 +31,8 @@
 </template>
 
 <script>
+
+
 export default {
   props: {
     value: {
@@ -51,7 +53,6 @@ export default {
     };
   },
   methods: {
-  
 		onApprove() {
 			if (this.value.trim() === "") return false;
 			if (this.title.trim() === this.value.trim()) {

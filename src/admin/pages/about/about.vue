@@ -1,24 +1,30 @@
 <template>
-  <div class="about-container container">
-    <div class="header">
-		<div class="title">Блок "Обо мне"</div>
-		<iconedButton type="iconed"  title="Добавить группу" @click="categoriAdIsShow = true" v-if="categoriAdIsShow === false"/>
+  <div class="about-container" >
+	<div class="container" v-if="categories.length">
+		<div class="header">
+			<div class="title">Блок "Обо мне"</div>
+			<iconedButton type="iconed"  title="Добавить группу" @click="categoriAdIsShow = true" v-if="categoriAdIsShow === false"/>
+		</div>
+		<ul class="skills">
+			<li class="item" v-if="categoriAdIsShow">
+				<category 
+					@remove="categoriAdIsShow = false"
+					@approve="createCategory"
+					empty 
+				/>
+			</li>
+			<li class="item" v-for="category in categories" :key="category.id">
+				<category
+					:title="category.category"
+					:skills="category.skills"
+				/>
+			</li>
+		</ul>
 	</div>
-	<ul class="skills">
-		<li class="item" v-if="categoriAdIsShow">
-			<category 
-				@remove="categoriAdIsShow = false"
-				@approve="createCategory"
-				empty 
-			/>
-		</li>
-		<li class="item" v-for="category in categories" :key="category.id">
-			<category
-				:title="category.category"
-				:skills="category.skills"
-			/>
-		</li>
-	</ul>
+	<div class="container" v-else>
+		<h1>Loading....</h1>
+	</div>
+    
   </div>
 </template>
 
@@ -27,6 +33,7 @@
 
 import  button  from '../../components/button/button'
 import  category  from '../../components/category/category'
+import  {mapActions, mapState}  from 'vuex'
 export default {
   components: {
 		iconedButton: button,
@@ -35,18 +42,33 @@ export default {
   	},
   	data() {
 		return{
-			categories: [],
 			categoriAdIsShow: false
 		}
 
 	},
+	computed: {
+		...mapState("categories",{
+			categories: state => state.data
+			
+		})
+	},
 	methods: {
-		createCategory() {
-			console.log('emitter');
+		...mapActions({
+			createCategoryAction: "categories/create",
+			fetchCategoryAction: "categories/fetch",
+		}),
+		async createCategory(categoryTitle) {
+			try {
+				await this.createCategoryAction(categoryTitle);
+				this.categoriAdIsShow = false;
+			} catch (error) {
+				console.log(error.message);
+				
+			}
 		}
 	},
 	created() {
-		this.categories = require("../../data/categories.json");
+		this.fetchCategoryAction();
 	}
 };
 </script>
