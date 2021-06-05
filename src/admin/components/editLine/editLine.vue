@@ -51,14 +51,15 @@ export default {
     };
   },
   methods: {
-    onApprove() {
-      if (this.title.trim() === "") return false;
-      if (this.title.trim() === this.value.trim()) {
-        this.editmode = false;
-      } else {
-        this.$emit("approve", this.value);
-      }
-    },
+  
+		onApprove() {
+			if (this.value.trim() === "") return false;
+			if (this.title.trim() === this.value.trim()) {
+				this.editmode = false;
+			} else {
+				this.$emit("approve", this.value);
+			}
+			},
   },
   components: {
     icon: () => import("components/icon"),

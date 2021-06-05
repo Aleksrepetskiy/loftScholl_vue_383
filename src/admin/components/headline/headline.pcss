@@ -1,3 +1,5 @@
+
+@import "../../../styles/mixins.pcss";
 .headline{
 	&-component {
 		background: #43436B;
@@ -17,6 +19,9 @@
 }
 .title {
 	margin-left: 2%;
+	@include tablets {
+		display: none;
+	}
 }
 .buttons {
 	margin-left: auto;

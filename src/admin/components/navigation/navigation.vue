@@ -54,6 +54,7 @@ export default {
 };
 </script>
 <style lang="postcss" scoped>
+	@import "../../../styles/mixins.pcss";
 	.navigation-component {
 		background-color: #fff;
 	}
@@ -81,6 +82,9 @@ export default {
 			height: 3px;
 			background: #383bcf;
 			}
+		}
+		@include tablets {
+			padding: 30px 18px ;
 		}
 	}
 

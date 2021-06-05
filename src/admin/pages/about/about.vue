@@ -51,25 +51,4 @@ export default {
 };
 </script>
 
-<style lang="postcss" scoped>
-	.header {
-		display: flex;
-		margin-bottom: 60px;
-	}
-	.skills {
-		display: flex;
-		flex-wrap: wrap;
-	}
-
-	.item {
-		width: calc(100% / 2 - 30px);
-		margin-right: 30px;
-		margin-bottom: 30px;
-	}
-	.title {
-		margin-right: 60px;
-		font-size: 21px;
-		font-weight: bold;
-		color: #414C63;
-	}
-</style>
+<style lang="postcss" scoped src="./about.pcss"></style>
