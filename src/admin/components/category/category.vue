@@ -19,7 +19,10 @@
 				</li>
 			</ul>
 			<div class="bottom-line">
-				<skillAddLine :blocked="empty" />
+				<skillAddLine 
+					@approve="$emit('create-skill', $event)"
+					:blocked="empty" 
+				/>
 			</div>
 		</template>
 	</card>	

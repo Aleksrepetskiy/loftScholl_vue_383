@@ -17,6 +17,9 @@
 				<category
 					:title="category.category"
 					:skills="category.skills"
+					@create-skill='createSkill($event, category.id)'
+					@edit-skill='editSkill'
+					@remove-skill='removeSkill'
 				/>
 			</li>
 		</ul>
@@ -56,7 +59,26 @@ export default {
 		...mapActions({
 			createCategoryAction: "categories/create",
 			fetchCategoryAction: "categories/fetch",
+			addSkillAction: "skills/add",
+			editSkillAction: "skills/edit",
+			removeSkillAction: "skills/remove",
 		}),
+		async createSkill(skill, categoryId) {
+			const newSkill = {
+				...skill,
+				category: categoryId
+			}
+			await this.addSkillAction(newSkill);
+			skill.title = ''
+			skill.percent = ''
+		},
+		async editSkill(skill) {
+			await this.editSkillAction(skill);
+			skill.editMode = false;
+		},
+		removeSkill(skill) {
+			this.removeSkillAction(skill);
+		},
 		async createCategory(categoryTitle) {
 			try {
 				await this.createCategoryAction(categoryTitle);
