@@ -10,7 +10,9 @@
       <div class="input">
         <app-input
           placeholder="Название новой группы"
+		  v-model="title"
           :value="value"
+		  :errorMessage="validation.firstError('title')"
           :errorText="errorText"
           @input="$emit('input', $event)"
           @keydown.native.enter="onApprove"
@@ -32,8 +34,15 @@
 
 <script>
 
+import { Validator, mixin as ValidatorMixin } from "simple-vue-validator";
 
 export default {
+	mixins: [ValidatorMixin],
+	validators: {
+		"title": value => {
+			return Validator.value(value).required("Не может быть пустым");
+		},
+	},
   props: {
     value: {
       type: String,
@@ -53,14 +62,10 @@ export default {
     };
   },
   methods: {
-		onApprove() {
-			if (this.value.trim() === "") return false;
-			if (this.title.trim() === this.value.trim()) {
-				this.editmode = false;
-			} else {
-				this.$emit("approve", this.value);
-			}
-			},
+		async onApprove() {
+			if (await this.$validate() === false) {console.log('erroer')};
+			this.$emit("approve", this.value);
+		},
   },
   components: {
     icon: () => import("components/icon"),
