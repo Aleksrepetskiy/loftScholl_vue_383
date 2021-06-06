@@ -10,18 +10,20 @@
 		<app-input 
 			v-model="currentSkill.title" 
 			noSidePaddings 
+			:errorMessage="validation.firstError('currentSkill.title')"
 		/>
 	</div>
 	<div class="percent">
 		<app-input
 		v-model="currentSkill.percent"
+		:errorMessage="validation.firstError('currentSkill.percent')"
 		type="number"
 		min="0"
 		max="100"
 		maxlength="3" 
     	/>
 	</div>
-	  <icon  symbol="tick" class="btn" @click="$emit('approve', currentSkill)"/>
+	  <icon  symbol="tick" class="btn" @click="approve"/>
 	  <icon symbol="cross" class="btn" @click="currentSkill.editMode = false"/>
   </div>
 </template>
@@ -29,8 +31,21 @@
 <script>
 import input from "../input"
 import icon from "../icon"
+import { Validator, mixin as ValidatorMixin } from "simple-vue-validator";
 
 export default {
+	mixins: [ValidatorMixin],
+	validators: {
+		"currentSkill.title": value => {
+			return Validator.value(value).required("Не может быть пустым");
+		},
+		"currentSkill.percent": value => {
+			return Validator.value(value)
+			.integer("Должно быть число")
+			.between(0, 100, "Некоректное значение")
+			.required("Не может быть пустым");
+		},
+	},
 	props: {
 		skill: {
 			type: Object,
@@ -54,7 +69,14 @@ export default {
 	components: {
 		icon,
 		appInput: input
-	}
+	},
+	methods: {
+	  async approve() {
+		  if (await this.$validate() === false) return;
+		  this.$emit('approve', currentSkill)
+	},
+}
+
  
 }
 </script>
