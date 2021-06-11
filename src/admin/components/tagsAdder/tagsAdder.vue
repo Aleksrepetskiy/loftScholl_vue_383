@@ -24,6 +24,7 @@
 <script>
 import appInput from "../input";
 import tag from "../tag";
+
 export default {
   components: {
     appInput,
@@ -46,16 +47,19 @@ export default {
   },
   computed: {
     tagsArray() {
-      return this.currentTags.trim().split(',');
+      return this.tags.trim().split(',');
     }
   },
   methods: {
     removeTag(tag) {
       const tags = [...this.tagsArray];
       const tagNdx = tags.indexOf(tag);
+
       if (tagNdx < 0) return;
+
       tags.splice(tagNdx, 1);
       this.currentTags = tags.join(", ");
+
       this.$emit("change", this.currentTags);
     }
   }
@@ -67,6 +71,7 @@ export default {
     display: flex;
     margin-top: 20px;
   }
+
   .tag {
     margin-right: 10px;
   }

@@ -1,60 +1,67 @@
-import Vue from "vue"
-import VueRouter from 'vue-router'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import store from "./store";
+import axios from "axios";
 
-Vue.use(VueRouter)
-
-import header from "./components/header";
-import about from "./pages/about";
-import login from "./pages/login";
-import works from  "./pages/works";
-import reviews from  "./pages/reviews";
-
-// const usrWorks = {
-// 	template: "<div>User works</div>",
-// }
-// const Error = {
-// 	template: `
-// 		<div>
-// 			<div>404 Not found</div>
-// 			<router-link to="/">На главную</router-link>
-// 		</div>		
-// 	`,
-// }
+Vue.use(VueRouter);
 
 const routes = [
 	{
-		path: '/',
+		path: "/",
 		components: {
-			header: header,
-			default: about
-		}
+			default: () => import("./pages/about"),
+			header: () => import("./components/header")
+		},
 	},
 	{
-		path: '/login',
-		component: login,
+		path: "/works",
+		components: {
+			default: () => import("./pages/works"),
+			header: () => import("./components/header")
+		},
 	},
 	{
-		path: '/works',
+		path: "/reviews",
 		components: {
-			header: header,
-			default: works
-		}
-		// children: [{
-		// 	path: 'profile',
-		// 	component: usrWorks
-		// }]
+			default: () => import("./pages/reviews"),
+			header: () => import("./components/header")
+		},
 	},
 	{
-		path: '/reviews',
-		components: {
-			header: header,
-			default: reviews
+		path: "/login",
+		component: () => import("./pages/login"),
+		meta: {
+			public: true
 		}
 	},
-	// {
-	// 	path: '*',
-	// 	component: Error
-	// }
-]
+];
 
-export default new VueRouter({ routes });
+const router = new VueRouter({ routes });
+
+const guard = axios.create({
+	baseURL: "https://webdev-api.loftschool.com"
+});
+
+router.beforeEach(async (to, from, next) => {
+	const isPublicRoute = to.matched.some(route => route.meta.public);
+	const isUserLoggedIn = store.getters["user/userIsLoggedIn"];
+	if (isPublicRoute === false && isUserLoggedIn === false) {
+		const token = localStorage.getItem("token");
+
+		guard.defaults.headers["Authorization"] = `Bearer ${token}`;
+
+		try {
+			const response = await guard.get("/user");
+			store.dispatch("user/login", await response.data.user)
+			next();
+		} catch (error) {
+			router.replace("/login");
+			localStorage.removeItem("token");
+		}
+	} else {
+		next();
+	}
+
+});
+
+export default router;
