@@ -28,7 +28,7 @@ const skillsRow = {
 
 new Vue ({
 	el: "#skills-component",
-	template: "#skills-list ",
+	template: "#skills-list",
 	components: {
 		skillsRow: skillsRow
 	},
